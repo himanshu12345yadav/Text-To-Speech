@@ -2,7 +2,7 @@
 Text to Speech built on the top of SpeechSynthesis Web API.
 
 # Getting Started
-You can check the web version of this app working straight into your browser by [`clicking here`]('https://himanshu12345yadav.github.io/Text-To-Speech').
+You can check the web version of this app working straight into your browser by [`clicking here`](https://himanshu12345yadav.github.io/Text-To-Speech).
 
 **Wanna give this app your own flavour, feel free to do so by cloning this app in your system**
 
