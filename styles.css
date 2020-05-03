@@ -1,0 +1,50 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to top, #9ea0a0, #ebebeb);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.custom-range::-webkit-slider-thumb {
+    background: #959396;
+}
+.heading {
+    font-family: 'Kaushan Script', cursive;
+    transform: rotate(-10deg);
+}
+
+#submit:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in;
+}
+#text {
+    font-size: 1.2rem;
+}
+
+#submit {
+    border-radius: 3rem;
+    box-shadow: 0px 0px 1rem #d6dad9;
+    background-color: #16b3a5;
+    transition: transform 0.3s ease-in;
+    outline: none;
+}
+.invalid-feedback {
+    font-size: 1.1rem;
+}
+.badge-pill {
+    font-size: 1.1rem;
+}
+.footer-content {
+    font-size: 1.1rem;
+}
+.spinner {
+    margin-left: 30%;
+}
