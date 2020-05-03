@@ -35,6 +35,7 @@ speed.onchange = () => {
 
 submit.onclick = (event) => {
     event.preventDefault();
+    submit.disabled = true;
     if (text.value === '') {
         text.classList.add('is-invalid');
     } else {
@@ -53,10 +54,7 @@ submit.onclick = (event) => {
         });
         var spinner = document.createElement('span');
         var form_group = document.querySelector('.form-group');
-        spinner.setAttribute(
-            'class',
-            'spinner-border text-light spinner'
-        );
+        spinner.setAttribute('class', 'spinner-border text-light spinner');
         form_group.appendChild(spinner);
         text.disabled = true;
         speak.pitch = pitch.value;
@@ -67,6 +65,7 @@ submit.onclick = (event) => {
         synth.cancel();
         synth.speak(speak);
         speak.onend = () => {
+            submit.disabled = false;
             text.disabled = false;
         };
     }
