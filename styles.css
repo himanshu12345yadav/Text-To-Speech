@@ -7,14 +7,15 @@
 
 body {
     height: 100vh;
-    background: linear-gradient(to top, #9ea0a0, #ebebeb);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: #ebebeb;
+    background-size: 100vw 100px;
 }
-
+.container-fluid {
+    height: 100px;
+    background-repeat: no-repeat;
+}
 .custom-range::-webkit-slider-thumb {
-    background: #959396;
+    background: #4f4f50;
 }
 .heading {
     font-family: 'Kaushan Script', cursive;
@@ -24,6 +25,7 @@ body {
 #submit:hover {
     transform: translateY(-5px);
     transition: transform 0.3s ease-in;
+    box-shadow: 0px 0px 2rem #b8b8bb;
 }
 #text {
     font-size: 1.2rem;

@@ -5,6 +5,7 @@ const submit = document.querySelector('#submit');
 const text = document.querySelector('#text');
 const pitch_badge = document.querySelector('#pitch-badge');
 const speed_badge = document.querySelector('#speed-badge');
+var background_img = document.querySelector('.container-fluid');
 var check_status = 1;
 let synth = window.speechSynthesis;
 let voices = [];
@@ -35,10 +36,10 @@ speed.onchange = () => {
 
 submit.onclick = (event) => {
     event.preventDefault();
-    submit.disabled = true;
     if (text.value === '') {
         text.classList.add('is-invalid');
     } else {
+        submit.disabled = true;
         if (text.classList.contains('is-invalid')) {
             text.classList.remove('is-invalid');
             text.classList.add('is-valid');
@@ -54,19 +55,26 @@ submit.onclick = (event) => {
         });
         var spinner = document.createElement('span');
         var form_group = document.querySelector('.form-group');
-        spinner.setAttribute('class', 'spinner-border text-light spinner');
+        spinner.setAttribute('class', 'spinner-border text-dark spinner');
         form_group.appendChild(spinner);
         text.disabled = true;
         speak.pitch = pitch.value;
         speak.rate = speed.value;
         speak.onstart = () => {
+            background_img.style.background = 'url(./background.gif)';
             form_group.removeChild(spinner);
         };
         synth.cancel();
         synth.speak(speak);
         speak.onend = () => {
+            background_img.style.background = '';
             submit.disabled = false;
             text.disabled = false;
+        };
+        synth.onerror = (error) => {
+            alert(
+                `Sorry, an error occured due to : ${error.message} please reload the page to restart`
+            );
         };
     }
 };
