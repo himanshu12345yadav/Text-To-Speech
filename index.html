@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Source+Sans+Pro&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div class="container">
-        <div class=" d-flex flex-column align-items-center text-dark display-4"><i
-                class="fa fa-comments-o text-dark fa-3x" style="color: #f0f0f0"></i>
+        <div class="d-flex flex-column align-items-center text-dark display-4 logo"><i
+                class="fa fa-comments-o text-dark fa-3x"></i>
             <h2 class="text-center text-info heading">
                 Text-To-Speech</h2>
         </div>
@@ -28,12 +27,12 @@
                 class="form-control my-4"></textarea>
             <div class="invalid-feedback display-1">Please write some text to speak...</div>
             <select name="voice" id='voice' class="custom-select my-3"></select>
-            <span class="badge badge-pill px-3 py-2 float-right bg-light text-dark" id="pitch-badge">1</span>
+            <span class="badge badge-pill px-3 py-2 float-right text-dark" id="pitch-badge">1</span>
             <label for="pitch">Pitch</label>
             <input type="range" name="pitch" id="pitch" value='1' class="custom-range my-3 text-info" min="0" max="2"
                 step=".2">
             <label for="speed">Speed</label>
-            <span class="badge badge-pill bg-light text-dark float-right px-3 py-2" id="speed-badge">1</span>
+            <span class="badge badge-pill bg-sexcondary text-dark float-right px-3 py-2" id="speed-badge">1</span>
             <input type="range" name="speed" value='1' id="speed" class="custom-range my-3" min="1" max="3" step=".5">
             <button type="submit" class="btn mx-auto my-3 text-white" id="submit"><i
                     class="fa fa-play responsive-img mx-2"></i>Speak For me</button>

@@ -55,7 +55,7 @@ submit.onclick = (event) => {
         });
         var spinner = document.createElement('span');
         var form_group = document.querySelector('.form-group');
-        spinner.setAttribute('class', 'spinner-border text-dark spinner');
+        spinner.setAttribute('class', 'spinner-border text-light spinner');
         form_group.appendChild(spinner);
         text.disabled = true;
         speak.pitch = pitch.value;
