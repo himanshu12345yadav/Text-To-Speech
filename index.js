@@ -5,41 +5,53 @@ const submit = document.querySelector('#submit');
 const text = document.querySelector('#text');
 const pitch_badge = document.querySelector('#pitch-badge');
 const speed_badge = document.querySelector('#speed-badge');
+const unsupportedBrowser = document.getElementsByClassName('unsupported')[0];
+const spinner = document.getElementsByClassName('spinner')[0];
 var background_img = document.querySelector('.container-fluid');
-var check_status = 1;
 let synth = window.speechSynthesis;
 let voices = [];
-synth.onvoiceschanged = () => {
-    if (check_status) {
-        voices = synth.getVoices();
-        voices.forEach((voice_name) => {
-            const option = document.createElement('option');
-            if (voice_name.name === 'Google US English') {
-                option.selected = true;
-            }
-            option.setAttribute('data-name', voice_name.name);
-            option.setAttribute('data-lang', voice_name.lang);
-            option.textContent =
-                voice_name.name + ' ( ' + voice_name.lang + ' ) ';
-            voice.appendChild(option);
-            check_status = 0;
-        });
-    }
+
+var isFirefox = typeof InstallTrigger !== 'undefined';
+var isChrome =
+    !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+var isSafari =
+    /constructor/i.test(window.HTMLElement) ||
+    (function (p) {
+        return p.toString() === '[object SafariRemoteNotification]';
+    })(
+        !window['safari'] ||
+            (typeof safari !== 'undefined' && safari.pushNotification)
+    );
+
+const getVoices = () => {
+    voices = synth.getVoices();
+    voices.forEach((voice_name) => {
+        const option = document.createElement('option');
+        if (voice_name.name === 'Google US English') {
+            option.selected = true;
+        }
+        option.setAttribute('data-name', voice_name.name);
+        option.setAttribute('data-lang', voice_name.lang);
+        option.textContent = voice_name.name + ' ( ' + voice_name.lang + ' ) ';
+        voice.appendChild(option);
+    });
 };
 
-pitch.onchange = () => {
+pitch.onmousemove = () => {
     pitch_badge.innerText = pitch.value;
 };
-speed.onchange = () => {
+speed.onmousemove = () => {
     speed_badge.innerText = speed.value;
 };
 
-submit.onclick = (event) => {
+let speak = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     if (text.value === '') {
         text.classList.add('is-invalid');
     } else {
         submit.disabled = true;
+        text.blur();
         if (text.classList.contains('is-invalid')) {
             text.classList.remove('is-invalid');
             text.classList.add('is-valid');
@@ -53,16 +65,13 @@ submit.onclick = (event) => {
                 speak.voice = item;
             }
         });
-        var spinner = document.createElement('span');
-        var form_group = document.querySelector('.form-group');
-        spinner.setAttribute('class', 'spinner-border text-light spinner');
-        form_group.appendChild(spinner);
+        spinner.classList.remove('hidden');
         text.disabled = true;
         speak.pitch = pitch.value;
         speak.rate = speed.value;
         speak.onstart = () => {
             background_img.style.background = 'url(./background.gif)';
-            form_group.removeChild(spinner);
+            spinner.classList.add('hidden');
         };
         synth.cancel();
         synth.speak(speak);
@@ -72,9 +81,23 @@ submit.onclick = (event) => {
             text.disabled = false;
         };
         synth.onerror = (error) => {
-            alert(
+            console.error(
                 `Sorry, an error occured due to : ${error.message} please reload the page to restart`
             );
         };
     }
 };
+
+if (isChrome || isFirefox) {
+    synth.onvoiceschanged = () => {
+        getVoices();
+    };
+    submit.addEventListener('click', speak);
+} else if (isSafari) {
+    getVoices();
+    submit.addEventListener('click', speak);
+} else {
+    unsupportedBrowser.classList.remove('hidden');
+    text.disabled = true;
+    submit.disabled = true;
+}

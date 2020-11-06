@@ -2,17 +2,11 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Recursive', sans-serif;
+    color: #ebe7e7;
 }
-
 body {
-    background: repeating-linear-gradient(
-            45deg,
-            #e2eb5e 10%,
-            #a8e24a 20%,
-            transparent 30%
-        ),
-        repeating-linear-gradient(-45deg, #8ff34d 10%, #40c9c2 30%);
+    background: #1a1a1a;
 }
 .container-fluid {
     height: 100px;
@@ -23,31 +17,31 @@ body {
     border: 0;
 }
 .custom-range::-webkit-slider-thumb {
-    background: #fd4fa0;
+    background: #e6e6e6;
 }
 .heading {
-    font-family: 'Lobster', cursive;
+    font-family: 'Kaushan Script', cursive;
     font-style: bolder;
     letter-spacing: 2px;
-    transform: rotate(-10deg);
+    transform: rotate(-5deg);
+    color: #6172d6;
 }
 .heading::first-letter {
     font-size: 5rem;
 }
 .logo > i {
-    background: repeating-linear-gradient(-45deg, #eb5e99 10%, #e472ee 40%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: white;
 }
 .custom-range::-webkit-slider-runnable-track {
-    background: linear-gradient(to right, #46f346, #daf10c, #61f7ea);
+    background: linear-gradient(to right, #c146cc, #4adbdb);
 }
 #text {
     font-size: 1.2rem;
-    color: #3b3b3a;
+    color: #eeeeee;
     background-color: #14141417;
     border: 0;
+    resize: none;
+    border: 2px solid #3a3a3a;
 }
 .badge {
     background-color: #e9e7e73a;
@@ -55,25 +49,33 @@ body {
 }
 #submit {
     border-radius: 3rem;
-    box-shadow: -5px -5px 5rem #87f56b, 5px 5px 5rem #24ffed;
-    background-color: #5bdacf;
+    background-color: #6172d6;
     transition: transform 0.3s ease-in;
     outline: none;
 }
-
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
 #submit:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
     transition: transform 0.3s ease-in;
 }
 .invalid-feedback {
     font-size: 1.1rem;
 }
 .badge-pill {
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 .footer-content {
-    font-size: 1.1rem;
+    font-size: 1rem;
+}
+.hidden {
+    display: none;
 }
 .spinner {
-    margin-left: 30%;
+    position: absolute;
+    right: 0;
+    margin: auto 2px;
 }
