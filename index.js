@@ -1,13 +1,13 @@
-const pitch = document.querySelector('#pitch');
-const speed = document.querySelector('#speed');
-const voice = document.querySelector('#voice');
-const submit = document.querySelector('#submit');
-const text = document.querySelector('#text');
-const pitch_badge = document.querySelector('#pitch-badge');
-const speed_badge = document.querySelector('#speed-badge');
-const unsupportedBrowser = document.getElementsByClassName('unsupported')[0];
-const spinner = document.getElementsByClassName('spinner')[0];
-var background_img = document.querySelector('.container-fluid');
+const pitch = document.getElementById('pitch');
+const speed = document.getElementById('speed');
+const voice = document.getElementById('voice');
+const submit = document.getElementById('submit');
+const text = document.getElementById('text');
+const pitch_badge = document.getElementById('pitch-badge');
+const speed_badge = document.getElementById('speed-badge');
+const unsupportedBrowser = document.querySelector('.unsupported');
+const spinner = document.getElementById('spinner');
+var background_img = document.querySelector('.visualiser');
 let synth = window.speechSynthesis;
 let voices = [];
 
@@ -65,18 +65,20 @@ let speak = (event) => {
                 speak.voice = item;
             }
         });
-        spinner.classList.remove('hidden');
+        spinner.classList.toggle('hidden');
         text.disabled = true;
         speak.pitch = pitch.value;
         speak.rate = speed.value;
         speak.onstart = () => {
-            background_img.style.background = 'url(./background.gif)';
-            spinner.classList.add('hidden');
+            background_img.classList.toggle('visible');
+            spinner.classList.toggle('hidden');
+            submit.disabled = true;
+            text.disabled = true;
         };
         synth.cancel();
         synth.speak(speak);
         speak.onend = () => {
-            background_img.style.background = '';
+            background_img.classList.toggle('visible');
             submit.disabled = false;
             text.disabled = false;
         };
@@ -97,7 +99,7 @@ if (isChrome || isFirefox) {
     getVoices();
     submit.addEventListener('click', speak);
 } else {
-    unsupportedBrowser.classList.remove('hidden');
+    unsupportedBrowser.classList.toggle('hidden');
     text.disabled = true;
     submit.disabled = true;
 }

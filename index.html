@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text To Speech</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Recursive&display=swap" rel="stylesheet">
@@ -12,14 +13,16 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="d-flex flex-column align-items-center text-dark display-4 logo"><i
-                class="fa fa-comments-o text-light fa-2x"></i>
+    <div class="container py-2">
+        <div class="d-flex flex-column align-items-center text-dark display-4 logo"><img src="./assets/logo.png"
+                alt="logo" class="logo">
             <h2 class="text-center heading">
                 Text-To-Speech</h2>
         </div>
     </div>
-    <div class="container-fluid"></div>
+    <div class="container visualiser-wrapper">
+        <img src="./assets/background.gif" class="visualiser" alt="visualiser">
+    </div>
     <div class="container">
         <form class="form-group needs-validation">
             <textarea name="text" id="text" cols="30" rows="5" placeholder="Write your text here to speak..."
@@ -36,7 +39,7 @@
             <div class="container d-flex flex-justify-center align-items-center position-relative">
                 <button type="submit" class="btn mx-auto my-3 text-white" id="submit"><i
                         class="fa fa-play responsive-img mx-2"></i>Speak For Me</button>
-                <span class="spinner-border text-light hidden spinner"></span>
+                <span class="spinner-border text-light hidden" id="spinner"></span>
             </div>
         </form>
     </div>
@@ -51,6 +54,6 @@
         </div>
     </div>
 </body>
-<script defer src="./index.js" type="text/javascript"></script>
+<script defer src="./index.js" type="module"></script>
 
 </html>

@@ -8,32 +8,39 @@
 body {
     background: #1a1a1a;
 }
-.container-fluid {
-    height: 100px;
-    background-repeat: no-repeat;
+.visualiser {
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+.visible {
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
 }
 #voice {
     background-color: #5250502a;
     border: 0;
 }
 .custom-range::-webkit-slider-thumb {
-    background: #e6e6e6;
+    background: #b9b9b9;
 }
 .heading {
     font-family: 'Kaushan Script', cursive;
     font-style: bolder;
     letter-spacing: 2px;
     transform: rotate(-5deg);
-    color: #6172d6;
+    color: #5d99ec;
 }
 .heading::first-letter {
     font-size: 5rem;
 }
-.logo > i {
-    color: white;
+.logo img {
+    width: 8rem;
 }
 .custom-range::-webkit-slider-runnable-track {
-    background: linear-gradient(to right, #c146cc, #4adbdb);
+    background: #bdc3c7;
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);
 }
 #text {
     font-size: 1.2rem;
@@ -49,7 +56,7 @@ body {
 }
 #submit {
     border-radius: 3rem;
-    background-color: #6172d6;
+    background-color: #183153;
     transition: transform 0.3s ease-in;
     outline: none;
 }
@@ -67,6 +74,7 @@ body {
 }
 .badge-pill {
     font-size: 1rem;
+    font-weight: normal;
 }
 .footer-content {
     font-size: 1rem;
@@ -74,8 +82,8 @@ body {
 .hidden {
     display: none;
 }
-.spinner {
+#spinner {
     position: absolute;
-    right: 0;
+    right: 0px;
     margin: auto 2px;
 }
